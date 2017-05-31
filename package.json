@@ -1,0 +1,24 @@
+{
+  "name": "fireeye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ankit-Garg21/FireEye.git"
+  },
+  "keywords": [
+    "FireEye",
+    "Assignment",
+    "UI"
+  ],
+  "author": "Ankit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ankit-Garg21/FireEye/issues"
+  },
+  "homepage": "https://github.com/Ankit-Garg21/FireEye#readme"
+}
