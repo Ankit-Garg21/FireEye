@@ -9,8 +9,6 @@ Mockup.config = {
     ]
 };
 
-//<a class="twitter-timeline" href="https://twitter.com/ankit00239">Tweets by ankit00239</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 Mockup.init = function() {
     $( ".page" ).hide();
     $( "#" + Mockup.pageId ).show();
@@ -20,10 +18,6 @@ Mockup.init = function() {
 
     var config = Mockup.config;
     Mockup.loadTimelines( config )
-};
-
-Mockup.bind = function() {
-    
 };
 
 Mockup.loadTimelines = function( config ) {
