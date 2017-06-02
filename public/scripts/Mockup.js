@@ -1,13 +1,13 @@
 function Mockup() {};
 
 Mockup.pageId = "pgMockup";
-Mockup.config = {
-    TIMELINES: [
-        "ankit00239",
-        "virendersehwag",
-        "narendramodi"
-    ]
-};
+// Mockup.config = {
+//     TIMELINES: [
+//         "ankit00239",
+//         "virendersehwag",
+//         "narendramodi"
+//     ]
+// };
 
 Mockup.init = function() {
     $( ".page" ).hide();
@@ -16,8 +16,14 @@ Mockup.init = function() {
     $( "#" + Mockup.pageId + " .container .resp-tabs-list" ).empty();
     $( "#" + Mockup.pageId + " .container .resp-tabs-container" ).empty();
 
-    var config = Mockup.config;
-    Mockup.loadTimelines( config )
+    $.ajax( {
+        url: 'common/data.json',
+        dataType: 'json',
+        success: function( config ) {
+            console.log(config);
+            Mockup.loadTimelines( config );
+        }
+    });
 };
 
 Mockup.loadTimelines = function( config ) {
