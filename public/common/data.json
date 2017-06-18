@@ -1,8 +1,31 @@
 {
-    "TIMELINES": [
-        "ankit00239",
-        "virendersehwag",
-        "narendramodi",
-        "aady_m"
-    ]
+    "TIMELINES": {
+        "ankit00239": {
+            "userName": "Ankit Garg",
+            "icon": "",
+            "POSTS": [
+                {
+                    "text": "",
+                    "date": ""
+                }
+            ]
+        },
+        "virendersehwag": {
+            "userName": "Virender Sehwag",
+            "icon": "",
+            "POSTS": [
+                
+            ]
+        },
+        "narendramodi": {
+            "userName": "Narendra Modi",
+            "icon": "",
+            "POSTS": [
+                
+            ]
+        },
+        "aady_m": {
+
+        }
+    }
 }

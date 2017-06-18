@@ -1,13 +1,6 @@
 function Mockup() {};
 
 Mockup.pageId = "pgMockup";
-// Mockup.config = {
-//     TIMELINES: [
-//         "ankit00239",
-//         "virendersehwag",
-//         "narendramodi"
-//     ]
-// };
 
 Mockup.init = function() {
     $( ".page" ).hide();
@@ -27,16 +20,14 @@ Mockup.init = function() {
 };
 
 Mockup.loadTimelines = function( config ) {
-    config.TIMELINES && config.TIMELINES.forEach( function( timeline ) {
+    Object.keys( config.TIMELINES ).forEach( function( timeline ) {
         var contentHtml = "";
         var listHtml = "";
 
         listHtml += '<li>' + timeline + '</li>';
 
-        contentHtml += '<div><a class="twitter-timeline" href="https://twitter.com/' + timeline +'">';
-        contentHtml += 'Tweets by ' + timeline;
-        contentHtml += '</a>';
-        contentHtml += '<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>';
+        contentHtml += '<div>';
+        contentHtml += Mockup.generateTimelineContent( timeline, config ) + '</div>';
 
         $( "#" + Mockup.pageId + " .container .resp-tabs-list" ).append( listHtml );
         $( "#" + Mockup.pageId + " .container .resp-tabs-container" ).append( contentHtml );
@@ -50,4 +41,44 @@ Mockup.loadTimelines = function( config ) {
         tabidentify: "feeds",
         activate: function() { console.log( "Switch" ); }
     });
+};
+
+Mockup.generateTimelineContent = function( timeline, config ) {
+    var timelineContent = "";
+
+    timelineContent += "<div class=\"timeline-header\">" + Mockup.generateHeader( timeline ) + "</div>";
+    timelineContent += "<div class=\"timeline-body\">" + Mockup.generateContent( timeline, config ) + "</div>";
+    timelineContent += "<footer class=\"timeline-footer\">" + Mockup.generateFooter( timeline ) + "</footer>";
+
+    return timelineContent;
+};
+
+Mockup.generateHeader = function( timeline ) {
+    var headerConent = "";
+    headerConent += '<h1 class="timeline-header-title">' + 'Tweets ';
+    headerConent += '<span class="timeline-header-name">by <a class="twitter-timeline" href="https://twitter.com/"' + timeline +'">';
+    headerConent += '@' + timeline;
+    headerConent += '</a></span></h1>';
+
+    return headerConent;
+};
+
+Mockup.generateContent = function( timeline, config ) {
+    var bodyConent = "";
+    var tweets = config.TIMELINES[ timeline ].POSTS;
+    bodyConent += '<div class="timeline-viewport"><ol class="timeline-tweetlist">';
+    tweets && tweets.forEach( function() {
+        bodyConent += '<li class="timeline-tweetlist-tweet content-border">'
+        bodyConent += '</li>';
+    });
+    bodyConent += "</ol></div>";
+
+    return bodyConent;
+};
+
+Mockup.generateFooter = function( timeline ) {
+    var footerConent = "";
+    footerConent += '<a class="timeline-footer-link float-right" href="https://twitter.com/' + timeline + '">';
+    footerConent += 'View on Twitter </a>';
+    return footerConent;
 };

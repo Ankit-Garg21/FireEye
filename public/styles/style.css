@@ -184,3 +184,52 @@ html, body
     justify-content: flex-end;
 }
 
+.float-right {
+    float: right;
+}
+
+.timeline-header-title {
+    font-weight: 300;
+    color: #292F33;
+}
+
+.twitter-timeline, .timeline-footer-link {
+    color: #3b94d9;
+}
+
+.timeline-header-name {
+    font-size: 14px;
+}
+
+.timeline-tweetlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-footer {
+    padding: 15px;
+    font-size: 12px;
+}
+
+@media only screen  and (min-width : 1224px) {
+    .timeline-header-title {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+    .timeline-header-title {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+    .timeline-header-title {
+        font-size: 16px;
+    }
+
+    .timeline-header-name {
+        font-size: 12px;
+    }
+}
