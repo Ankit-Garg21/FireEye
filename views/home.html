@@ -16,13 +16,23 @@
 
 <body>
 	<div class="header elevation fixed-top clearfix">
-		<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Compose a Tweet" data-url="https://fireeye-app.herokuapp.com" data-show-count="false">Compose a Tweet</a>
-		<script async src="//platform.twitter.com/widgets.js charset="utf-8"></script>
+		<div class="btn"><i class="material-icons">whatshot</i><a data-modal-id="create-tweet" href="#">Tweet</a></div>
 	</div>
 	<div id="container">
 		<div class="body">
 			<div class="pageContent">
 				<div class="page" id="pgMockup">
+
+					<div id="create-tweet" class="modal-box">
+						<header> <a href="#" class="modal-close close">×</a>
+							<h3>Compose a Tweet</h3>
+						</header>
+						<div class="flex modal-body">
+							<textarea type="text" class="create-tweet-text"></textarea>
+						</div>
+						<footer> <a href="#" class="modal-close save-tweet">Save</a> </footer>
+					</div>
+
 					<div class="container">
 						<div id="feeds-tab">          
 							<ul class="resp-tabs-list feeds">
