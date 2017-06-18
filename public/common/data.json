@@ -5,8 +5,16 @@
             "icon": "",
             "POSTS": [
                 {
-                    "text": "",
-                    "date": ""
+                    "text": "Sad to learn of tragic loss of lives in the forest fire in Portugal. Deepest condolences to the Portugese people on this tragedy.",
+                    "date": 1497637800000,
+                    "retweetFrom": "",
+                    "mediaLink": ""
+                },
+                {
+                    "text": "God Is An Astronaut - Frozen Twilight",
+                    "date": 1497637800000,
+                    "retweetFrom": "",
+                    "mediaLink": "http://youtu.be/0qV8j9m4ckE"
                 }
             ]
         },
@@ -15,8 +23,9 @@
             "icon": "",
             "POSTS": [
                 {
-                    "text": "",
-                    "date": ""
+                    "text": "Just signed up for Wikiwand, a cool new app that allows quick access to Wikipedia on the go.",
+                    "date": 1497795018698,
+                    "mediaLink": "http://lnc.hr/n55u3"
                 }
             ]
         },
@@ -25,13 +34,22 @@
             "icon": "",
             "POSTS": [
                 {
-                    "text": "",
-                    "date": ""
+                    "text": "YETI Presents - Malloy Brothers",
+                    "date": 1497795018698,
+                    "mediaLink": "https://vimeo.com/157179553"
                 }
             ]
         },
         "aady_m": {
-
+            "userName": "Aditya Bhatt",
+            "icon": "",
+            "POSTS": [
+                {
+                    "text": "Google Wallpaper",
+                    "date": 1497795018698,
+                    "mediaLink": "http://cdn.wallpapersafari.com/14/10/ALliEG.jpg"
+                }
+            ]
         }
     }
 }

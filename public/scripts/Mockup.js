@@ -115,20 +115,29 @@ Mockup.generateContent = function( timeline, content ) {
 };
 
 Mockup.getTweetContent = function( timeline, userName, tweet ) {
-    var bodyConent = "";
-    bodyConent += '<li class="timeline-tweetlist-tweet content-border">'
-    bodyConent +=   '<div class="timeline-tweet-author">'
-    bodyConent +=       '<span class="tweet-avatar">';
-    bodyConent +=           '<img>';
-    bodyConent +=       '</span>';
-    bodyConent +=       '<a href="https://twitter.com/' + timeline + '" class="tweet-link">';
-    bodyConent +=           '<span class="tweet-name">' + userName + '</span>';
-    bodyConent +=           '<span class="tweet-link"> @' + timeline + '</span>';
-    bodyConent +=       '</a>';
-    bodyConent +=   '</div>';
-    bodyConent += '</li>';
+    var bodyContent = "";
+    bodyContent += '<li class="timeline-tweetlist-tweet content-border">'
+    bodyContent +=   '<div class="timeline-tweet-author">'
+    bodyContent +=       '<span class="tweet-avatar">';
+    bodyContent +=           '<img>';
+    bodyContent +=       '</span>';
+    bodyContent +=       '<a href="https://twitter.com/' + timeline + '" class="tweet-link">';
+    bodyContent +=           '<span class="tweet-name">' + userName + '</span>';
+    bodyContent +=           '<span class="tweet-link"> @' + timeline + '</span>';
+    bodyContent +=       '</a>';
+    bodyContent +=   '</div>';
 
-    return bodyConent;
+    bodyContent +=   '<p class="timeline-tweet-content">';
+    bodyContent +=  tweet.text;
+    if( tweet.mediaLink ) {
+        var media = Mockup.embedMedia( tweet.mediaLink );
+        bodyContent += media;
+    }
+    bodyContent +=   '</p>';
+    bodyContent +=  '<div class="timeline-tweet-metadata"><a class="tweet-date">' + new Date( tweet.date ).toLocaleString() + '</a></div>';
+    bodyContent += '</li>';
+
+    return bodyContent;
 };
 
 Mockup.generateFooter = function( timeline ) {
@@ -137,3 +146,28 @@ Mockup.generateFooter = function( timeline ) {
     footerConent += 'View on Twitter </a>';
     return footerConent;
 };
+
+Mockup.embedMedia = function( html ) {
+    var pattern1 = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
+    var pattern2 = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+    var pattern3 = /([-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?(?:jpg|jpeg|gif|png))/gi;
+    var replacement = "";
+
+    if(pattern1.test(html)){
+        replacement = '<iframe class="tweet-iframe-media" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+        html = html.replace(pattern1, replacement);
+    }
+
+
+    if(pattern2.test(html)){
+        replacement = '<iframe class="tweet-iframe-media" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+        html = html.replace(pattern2, replacement);
+    } 
+
+
+    if(pattern3.test(html)){
+        replacement = '<a href="$1" target="_blank"><img class="sml tweet-iframe-media" src="$1" /></a><br />';
+        html = html.replace(pattern3, replacement);
+    }          
+    return html;
+}
