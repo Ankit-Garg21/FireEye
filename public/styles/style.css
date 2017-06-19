@@ -410,6 +410,7 @@ a.close:hover {
 
     .timeline-tweet-content {
         font-size: 16px;
+        padding-top: 10px;
     }
 
     .tweet-date {
@@ -423,5 +424,14 @@ a.close:hover {
     .tweet-avatar {
         height: 32px;
         width: 32px;
+    }
+
+    .tweet-link {
+        margin-left: 24px;
+    }
+
+    .modal-box {
+        width: 90%;
+        left: 5%;
     }
 }
