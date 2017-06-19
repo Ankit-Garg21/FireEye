@@ -46,7 +46,7 @@ QUnit.module( "Configuration", function() {
         var urlId = url.substr( url.lastIndexOf( "/" ) );
 
         assert.equal( media.hasClass( "tweet-iframe-media" ), true, "Assert Media IFrame Present" );
-        assert.equal( media.attr( "src" ), "http://www.youtube.com/embed" + urlId, "Assert Youtube SRC" );
+        assert.equal( media.attr( "src" ), "https://www.youtube.com/embed" + urlId, "Assert Youtube SRC" );
 
         url = "https://vimeo.com/157179553";
         urlId = url.substr( url.lastIndexOf( "/" ) );
