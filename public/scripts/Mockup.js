@@ -104,7 +104,7 @@ Mockup.generateHeader = function( timeline ) {
 Mockup.generateContent = function( timeline, content ) {
     var bodyConent = "";
     //var userName = content.userName;
-    var tweets = content.POSTS;
+    var tweets = content && content.POSTS;
     bodyConent += '<div class="timeline-viewport"><ol class="timeline-tweetlist">';
     tweets && tweets.forEach( function( tweet ) {
         bodyConent += Mockup.getTweetContent( timeline, tweet );
