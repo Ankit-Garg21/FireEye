@@ -230,6 +230,16 @@ a {
     flex-direction: column;
 }
 
+.timeline-tweet-author {
+    display: flex;
+    flex-direction: row; 
+}
+
+.tweet-author-icon {
+    float: right;
+    opacity: 0.3;
+}
+
 .timeline-tweetlist-tweet:hover {
     background-color: rgba(160,200,220,.12);
 }
@@ -242,6 +252,10 @@ a {
 .tweet-name {
     font-weight: 700;
     color: rgb(41, 47, 51);
+}
+
+.tweet-link {
+    margin-left: 8px;
 }
 
 .tweet-name:hover {
@@ -258,7 +272,8 @@ a {
 
 .tweet-date {
     font-size: 12px;
-    color: #e1e8ed;
+    color: #292F33;
+    opacity: 0.3;
     float: right;
 }
 
@@ -347,6 +362,11 @@ a.close:hover {
     .tweet-iframe-media {
         height: 400px;
     }
+
+    .tweet-avatar {
+        height: 56px;
+        width: 56px;
+    }
 }
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
@@ -368,6 +388,11 @@ a.close:hover {
 
     .tweet-iframe-media {
         height: 300px;
+    }
+
+    .tweet-avatar {
+        height: 48px;
+        width: 48px;
     }
 }
 
@@ -394,5 +419,10 @@ a.close:hover {
 
     .tweet-iframe-media {
         height: 200px;
+    }
+
+    .tweet-avatar {
+        height: 32px;
+        width: 32px;
     }
 }

@@ -46,8 +46,8 @@ Mockup.bindEvents = function() {
             date: new Date().getTime()
         };
         var activeUser = $( "#" + Mockup.pageId + " .resp-tab-active" ).attr( "user" );
-        var userName = Mockup.config.TIMELINES[ activeUser ].userName;
-        var tweetContent = Mockup.getTweetContent( activeUser, userName, tweet );
+        //var userName = Mockup.config.TIMELINES[ activeUser ].userName;
+        var tweetContent = Mockup.getTweetContent( activeUser, tweet );
         $( "#" + Mockup.pageId + " .resp-tab-content-active .timeline-tweetlist" ).prepend( tweetContent );
         $( ".modal-box, .modal-overlay" ).fadeOut( 500, function() {
             $( ".modal-overlay" ).remove();
@@ -103,32 +103,38 @@ Mockup.generateHeader = function( timeline ) {
 
 Mockup.generateContent = function( timeline, content ) {
     var bodyConent = "";
-    var userName = content.userName;
+    //var userName = content.userName;
     var tweets = content.POSTS;
     bodyConent += '<div class="timeline-viewport"><ol class="timeline-tweetlist">';
     tweets && tweets.forEach( function( tweet ) {
-        bodyConent += Mockup.getTweetContent( timeline, userName, tweet );
+        bodyConent += Mockup.getTweetContent( timeline, tweet );
     });
     bodyConent += "</ol></div>";
 
     return bodyConent;
 };
 
-Mockup.getTweetContent = function( timeline, userName, tweet ) {
+Mockup.getTweetContent = function( timeline, tweet ) {
     var bodyContent = "";
+
+    var timelineConfig = Mockup.config.TIMELINES[ timeline ];
+    var userName = timelineConfig.userName;
+    var icon = timelineConfig.icon;
+
     bodyContent += '<li class="timeline-tweetlist-tweet content-border">'
     bodyContent +=   '<div class="timeline-tweet-author">'
     bodyContent +=       '<span class="tweet-avatar">';
-    bodyContent +=           '<img>';
+    bodyContent +=           '<img src="' + icon + '">';
     bodyContent +=       '</span>';
     bodyContent +=       '<a href="https://twitter.com/' + timeline + '" class="tweet-link">';
     bodyContent +=           '<span class="tweet-name">' + userName + '</span>';
-    bodyContent +=           '<span class="tweet-link"> @' + timeline + '</span>';
+    bodyContent +=           '<span class="tweet-user-link"> @' + timeline + '</span>';
     bodyContent +=       '</a>';
+    bodyContent +=       '<i class="material-icons tweet-author-icon">whatshot</i>';
     bodyContent +=   '</div>';
 
     bodyContent +=   '<p class="timeline-tweet-content">';
-    bodyContent +=  tweet.text;
+    bodyContent +=  '<span>' + tweet.text + '</span>';
     if( tweet.mediaLink ) {
         var media = Mockup.embedMedia( tweet.mediaLink );
         bodyContent += media;
@@ -156,18 +162,14 @@ Mockup.embedMedia = function( html ) {
     if(pattern1.test(html)){
         replacement = '<iframe class="tweet-iframe-media" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         html = html.replace(pattern1, replacement);
-    }
-
-
-    if(pattern2.test(html)){
+    } else if(pattern2.test(html)){
         replacement = '<iframe class="tweet-iframe-media" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
         html = html.replace(pattern2, replacement);
-    } 
-
-
-    if(pattern3.test(html)){
+    } else if(pattern3.test(html)){
         replacement = '<a href="$1" target="_blank"><img class="sml tweet-iframe-media" src="$1" /></a><br />';
         html = html.replace(pattern3, replacement);
-    }          
+    } else {
+        html = '<a href="' + html + '" target="_blank">' + html + '</a><br />';
+    }    
     return html;
 }
