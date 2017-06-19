@@ -163,7 +163,7 @@ Mockup.embedMedia = function( html ) {
         replacement = '<iframe class="tweet-iframe-media" src="//player.vimeo.com/video/$1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         html = html.replace(pattern1, replacement);
     } else if(pattern2.test(html)){
-        replacement = '<iframe class="tweet-iframe-media" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+        replacement = '<iframe class="tweet-iframe-media" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
         html = html.replace(pattern2, replacement);
     } else if(pattern3.test(html)){
         replacement = '<a href="$1" target="_blank"><img class="sml tweet-iframe-media" src="$1" /></a><br />';
